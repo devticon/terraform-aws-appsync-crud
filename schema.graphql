@@ -1,0 +1,24 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    get(id:ID!): Item
+    list: [Item]
+}
+
+type Mutation {
+    add(author: String!, title: String, content: String, url: String): Item!
+    delete(id:ID!): Item!
+    update(id:ID!, author: String!, title: String, content: String, url: String): Item!
+}
+
+#Object must contain id field
+type Item {
+    id: ID!
+    author: String!
+    title: String
+    content: String
+    url: String
+}
