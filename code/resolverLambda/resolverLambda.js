@@ -1,6 +1,7 @@
 const { v4: uuid } = require("uuid");
 const AWS = require("aws-sdk");
 const dynamoTabeName = process.env.dynamo_table_name
+const expressionBuilder = require("./expressionBuilder")
 
 const documentClient = new AWS.DynamoDB.DocumentClient();
 
@@ -46,27 +47,19 @@ exports.handler = async (event, context, callback) => {
       callback(null, event.arguments);
       break;
 
-    case "update": //TODO generyczny update zalezny od zadeklarowanej schemy
+    case "update":
       console.log("Updating")
+      console.log(event.arguments)
+      const expression = expressionBuilder.create(event.arguments);
       await documentClient
         .update({
           TableName: dynamoTabeName,
           Key: {
             id: event.arguments.id
           },
-          UpdateExpression: 'set #title = :title, #author = :author, #content = :content, #url= :url',
-          ExpressionAttributeNames: {
-            '#title': 'title',
-            '#content': 'content',
-            '#author': 'author',
-            '#url':'url'
-          },
-          ExpressionAttributeValues: {
-            ':title': event.arguments.title,
-            ':content': event.arguments.content,
-            ':author': event.arguments.author,
-            ':url':event.arguments.url
-          }
+          UpdateExpression: expression.updateExpression,
+          ExpressionAttributeNames: expression.expressionAttributeNames,
+          ExpressionAttributeValues:expression.expressionAttributeValues
         })
         .promise();
       callback(null, event.arguments);

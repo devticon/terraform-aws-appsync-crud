@@ -4,7 +4,6 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
 # Node artifact files
-node_modules/
 dist/
 
 # Compiled Java class files
@@ -46,6 +45,6 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
-/terraform/.terraform/
+
 /code/resolverLambda/package-lock.json
 /.terraform/
