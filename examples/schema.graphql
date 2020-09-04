@@ -1,0 +1,24 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    get(id:ID!): Customer
+    list: [Customer]
+}
+
+type Mutation {
+    add(name: String!, surname: String, phone: String, email: String): Customer!
+    delete(id:ID!): Customer!
+    update(id:ID!, name: String!, surname: String, phone: String, email: String): Customer!
+}
+
+#Object must contain id field
+type Customer {
+    id: ID!
+    name: String!
+    surname: String
+    phone: String
+    email: String
+}
