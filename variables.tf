@@ -17,7 +17,6 @@ variable "schema_path" {
 variable "object_name" {
   description = "Object name used to distinguish CRUD modules. Added as prefix to db_table_name, api_name."
   type = string
-  default = "item"
 }
 
 variable "project_prefix" {
