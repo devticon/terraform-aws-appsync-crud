@@ -21,7 +21,6 @@ dist/
 
 # Maven
 target/
-dist/
 
 # JetBrains IDE
 .idea/
@@ -48,5 +47,5 @@ Thumbs.db
 *.mov
 *.wmv
 /terraform/.terraform/
-/crud-api/code/resolverLambda/package-lock.json
+/code/resolverLambda/package-lock.json
 /.terraform/
