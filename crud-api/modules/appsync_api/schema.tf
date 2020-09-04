@@ -1,9 +1,9 @@
 data "local_file" "cloudformation_schema_template" {
-  filename = "../cloudformation-templates/schema.json"
+  filename = "${path.root}/crud-api/cloudformation-templates/schema.json"
 }
 
 data "local_file" "schema" {
-  filename = "../schema.graphql"
+  filename = "${path.root}/schema.graphql"
 }
 
 resource "aws_cloudformation_stack" "api_schema" {

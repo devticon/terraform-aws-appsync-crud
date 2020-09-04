@@ -1,5 +1,5 @@
 data "local_file" "cloudformation_resolver_template" {
-  filename = "../cloudformation-templates/resolver.json"
+  filename = "${path.module}/cloudformation-templates/resolver.json"
 }
 
 module "add_resolver" {
@@ -7,9 +7,9 @@ module "add_resolver" {
   data_source_name = module.resolver_lambda.function_name
   field_name = "add"
   graphql_api_id = module.appsync_api.api_id
-  request_mapping_file_path = "../api/resolvers/add-request-mapping-template.txt"
+  request_mapping_file_path = "${path.module}/api/resolvers/add-request-mapping-template.txt"
   resolver_name = "${module.appsync_api.api_name}-add-resolver"
-  response_mapping_file_path = "../api/resolvers/add-response-mapping-template.txt"
+  response_mapping_file_path = "${path.module}/api/resolvers/add-response-mapping-template.txt"
   template_body = data.local_file.cloudformation_resolver_template.content
   type_name = "Mutation"
 
@@ -23,9 +23,9 @@ module "update_resolver" {
   data_source_name = module.resolver_lambda.function_name
   field_name = "update"
   graphql_api_id = module.appsync_api.api_id
-  request_mapping_file_path = "../api/resolvers/update-request-mapping-template.txt"
+  request_mapping_file_path = "${path.module}/api/resolvers/update-request-mapping-template.txt"
   resolver_name = "${module.appsync_api.api_name}-update-resolver"
-  response_mapping_file_path = "../api/resolvers/update-response-mapping-template.txt"
+  response_mapping_file_path = "${path.module}/api/resolvers/update-response-mapping-template.txt"
   template_body = data.local_file.cloudformation_resolver_template.content
   type_name = "Mutation"
   data_source_type = "AWS_LAMBDA"
@@ -40,9 +40,9 @@ module "delete_resolver" {
   data_source_name = module.resolver_lambda.function_name
   field_name = "delete"
   graphql_api_id = module.appsync_api.api_id
-  request_mapping_file_path = "../api/resolvers/delete-request-mapping-template.txt"
+  request_mapping_file_path = "${path.module}/api/resolvers/delete-request-mapping-template.txt"
   resolver_name = "${module.appsync_api.api_name}-delete-resolver"
-  response_mapping_file_path = "../api/resolvers/delete-response-mapping-template.txt"
+  response_mapping_file_path = "${path.module}/api/resolvers/delete-response-mapping-template.txt"
   template_body = data.local_file.cloudformation_resolver_template.content
   type_name = "Mutation"
 
@@ -56,9 +56,9 @@ module "get_resolver" {
   data_source_name = module.resolver_lambda.function_name
   field_name = "get"
   graphql_api_id = module.appsync_api.api_id
-  request_mapping_file_path = "../api/resolvers/get-request-mapping-template.txt"
+  request_mapping_file_path = "${path.module}/api/resolvers/get-request-mapping-template.txt"
   resolver_name = "${module.appsync_api.api_name}-get-resolver"
-  response_mapping_file_path = "../api/resolvers/get-response-mapping-template.txt"
+  response_mapping_file_path = "${path.module}/api/resolvers/get-response-mapping-template.txt"
   template_body = data.local_file.cloudformation_resolver_template.content
   type_name = "Query"
 
@@ -72,9 +72,9 @@ module "list_resolver" {
   data_source_name = aws_dynamodb_table.main.name
   field_name = "list"
   graphql_api_id = module.appsync_api.api_id
-  request_mapping_file_path = "../api/resolvers/list-request-mapping-template.txt"
+  request_mapping_file_path = "${path.module}/api/resolvers/list-request-mapping-template.txt"
   resolver_name = "${module.appsync_api.api_name}-list-posts-resolver"
-  response_mapping_file_path = "../api/resolvers/list-response-mapping-template.txt"
+  response_mapping_file_path = "${path.module}/api/resolvers/list-response-mapping-template.txt"
   template_body = data.local_file.cloudformation_resolver_template.content
   type_name = "Query"
 

@@ -7,6 +7,8 @@ resource "aws_appsync_datasource" "lambda_data_source" {
     function_arn = var.resolver_lambda_arn
   }
 
+  depends_on = [aws_cloudformation_stack.api_schema]
+
 }
 
 resource "aws_appsync_datasource" "dynamo_data_source" {
@@ -19,4 +21,5 @@ resource "aws_appsync_datasource" "dynamo_data_source" {
     table_name = var.dynamo_table_name
   }
 
+  depends_on = [aws_cloudformation_stack.api_schema]
 }

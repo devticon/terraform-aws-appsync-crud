@@ -48,4 +48,5 @@ Thumbs.db
 *.mov
 *.wmv
 /terraform/.terraform/
-/code/resolverLambda/package-lock.json
+/crud-api/code/resolverLambda/package-lock.json
+/.terraform/

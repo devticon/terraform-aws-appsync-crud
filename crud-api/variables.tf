@@ -21,3 +21,7 @@ variable "object_name" {
   type = string
   default = "item"
 }
+
+variable "project_prefix" {
+  type =string
+}
